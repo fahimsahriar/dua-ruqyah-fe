@@ -1,13 +1,331 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+/* Reset some default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: #ebeef2;
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
+  }
+  
+  /* Style for container */
+  .container {
+    display: flex;
+  }
+  
+  /* Style for sidebar */
+  .sidebar {
+    width: 100px; /* Adjust width as needed */
+    height: 100vh;
+    display: flex; /* Add display property */
+    flex-direction: column; /* Add flex direction */
+  }
+  
+  .sidebar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    margin-left: 20px; /* Combined margin shorthand */
+    margin-top: 20px; /* Combined margin shorthand */
+    margin-bottom: 20px; /* Combined margin shorthand */
+    height: calc(100% - 40px); /* Set height to fill .sidebar */
+    overflow: hidden; /* Hide any content overflow */
+    border-top-left-radius: 20px; /* Adjust radius as needed */
+    border-bottom-left-radius: 20px; /* Adjust radius as needed */
+    border-top-right-radius: 10px; /* Adjust radius as needed */
+    border-bottom-right-radius: 10px; /* Adjust radius as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 7px;
+  }
+  
+  /* Style for each section */
+  .top-section,
+  .middle-section,
+  .bottom-section {
+    padding: 10px; /* Example padding */
+  }
+  
+  /* Style for middle section */
+  .middle-section {
+    flex-grow: 1; /* Fill remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    background-color: #ccc; /* Example background color */
+    border-radius: 50%; /* Border radius of 50% */
+  }
+  
+  .fa-icon {
+    font-size: 24px; /* Adjust icon size as needed */
+    color: #fff; /* Example icon color */
+  }
+  
+  .content {
+    flex: 1; /* Fill remaining space */
+    padding: 15px 15px 0px 15px;
+  }
+  
+  .header {
+    padding: 10px; /* Example padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically center the contents */
+  }
+  
+  .left-section {
+    /* Style for left section (logo) */
+  }
+  
+  .right-section {
+    /* Style for right section (search bar, profile icon, setting icon) */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+  }
+  
+  .search-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .profile-section {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .user-icon {
+    margin-right: 10px; /* Example margin */
+  }
+  
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    top: calc(100% + 5px);
+    left: 0;
+  }
+  .dropdown-menu a {
+    display: block;
+    padding: 5px 0;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .main-section {
+    display: flex;
+    gap: 20px;
+  }
+  .left-side-container {
+      flex: 1; /* Take up 1/3 of the width */
+      background-color: #fff; /* Example background color */
+      border-radius: 10px; /* Border radius */
+      display: flex; /* Use flexbox */
+      flex-direction: column; /* Stack items vertically */
+      height: calc(100vh - 110px);
+      overflow: hidden; /* Ensure content does not overflow the rounded corners */
+  }
+  .left-side {
+      display: flex;
+      flex-direction: column; /* Stack items vertically */
+  }
+  .section {
+      overflow: hidden;
+      border-radius: 10px; /* Border radius */
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+  .section-heading{
+      background-color: rgb(31 164 91);
+      color: #fff;
+      padding: 18px;
+      text-align: center;
+  }
+  
+  .search-component {
+      display: flex;
+      align-items: center;
+      background-color: #f0f0f0; /* Example background color */
+      padding: 10px; /* Example padding */
+      margin-top: 10px;
+  }
+  
+  .search-input {
+      flex: 1;
+      border: none;
+      border-radius: 5px; /* Example border radius */
+      padding: 5px; /* Example padding */
+  }
+  
+  .search-button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 5px; /* Example padding */
+  }
+  /* Your existing CSS for main-section, left-side-container, left-side, section, etc. */
+  
+  .lots-of-divs {
+    padding: 10px 0px; /* Example padding */
+    max-height: calc(100vh - 200px); /* Example maximum height */
+    overflow-y: auto;
+  }
+  
+  .custom-div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Example margin between divs */
+    padding: 10px;
+    border: 1px solid red;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .left-part {
+    margin-right: 10px; /* Example margin between icon and content */
+  }
+  
+  .icon {
+    /* Example styles for icon */
+  }
+  
+  .right-part {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .heading,
+  .sub-heading {
+    /* Example styles for heading and subheading */
+  }
+  
+  .right-side {
+    flex: 3;
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+  .subcategory {
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    background-color: #ffffff; /* White background */
+    border-radius: 15px; /* Border radius */
+    margin-bottom: 20px; /* Example margin between cards */
+    padding: 20px; /* Example padding */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Example box shadow */
+  }
+  
+  
+  /* Styles for the second card */
+  .second-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  /* Styling for the second card */
+  .second-card .card-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Styles for the card content */
+  .card-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Styles for the top part */
+  .top-part {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Styles for the icon */
+  .icon {
+    /* Add your icon styles here */
+  }
+  
+  /* Styles for the paragraph */
+  .top-part p {
+    margin-left: 10px; /* Example margin between icon and paragraph */
+    flex: 1; /* Take up remaining space */
+  }
+  
+  /* Styles for the middle part */
+  .middle-part {
+    /* Add styles for the middle part if needed */
+  }
+  
+  /* Styles for the paragraphs */
+  .paragraphs p {
+    /* Add styles for the paragraphs if needed */
+  }
+  
+  /* Styles for the bottom part */
+  .bottom-part {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Styles for the play button */
+  .play-button {
+    /* Add styles for the play button */
+  }
+  
+  /* Styles for the icons */
+  .icons {
+    display: flex;
+  }
+  
+  /* Styles for each individual icon */
+  .icon {
+    margin-left: 10px; /* Example margin between icons */
+    /* Add styles for each icon */
+  }
+  
+  
+
