@@ -9,6 +9,7 @@ function MainSectionComponent() {
 
   // Function to set the data fetched for the selected category
   const handleCategoryData = (data) => {
+    setCategoryData(null);
     setCategoryData(data);
   };
 

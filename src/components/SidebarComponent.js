@@ -18,6 +18,12 @@ function SidebarComponent() {
           <div className="icon-container">
             <i className="fas fa-icon"></i>
           </div>
+          <div className="icon-container">
+            <i className="fas fa-icon"></i>
+          </div>
+          <div className="icon-container">
+            <i className="fas fa-icon"></i>
+          </div>
           {/* Add more icon containers as needed */}
         </div>
         <div className="bottom-section">

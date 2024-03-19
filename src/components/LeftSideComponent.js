@@ -4,16 +4,26 @@ import React, { useState, useEffect } from 'react';
 function LeftSideComponent({ handleCategoryData }) {
   // State to store the categories
   const [categories, setCategories] = useState([]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
-  // Fetch categories from the API
+  // Fetch categories from the API and select the first category
   useEffect(() => {
     fetch('http://localhost:5000/api/duas/categories')
       .then(response => response.json())
-      .then(data => setCategories(data))
+      .then(data => {
+        setCategories(data);
+        // Select the first category
+        if (data.length > 0) {
+          setSelectedCategoryId(data[0].cat_id);
+          handleClick(data[0].cat_id);
+        }
+      })
       .catch(error => console.error('Error fetching categories:', error));
-  }, []);
+  }, [])
 
   const handleClick = (categoryId) => {
+    // Set the selected category ID
+    setSelectedCategoryId(categoryId);
     // Make API call using the category ID
     fetch(`http://localhost:5000/api/duas/duas/category/${categoryId}`)
       .then(response => response.json())
@@ -45,7 +55,7 @@ function LeftSideComponent({ handleCategoryData }) {
           <div className="lots-of-divs">
             {/* Map through categories to create custom-divs */}
             {categories.map(category => (
-              <div key={category.id} className="custom-div" onClick={() => handleClick(category.cat_id)}>
+              <div key={category.id} className={`custom-div ${selectedCategoryId === category.cat_id ? 'selected' : ''}`} onClick={() => handleClick(category.cat_id)}>
                 <div className="left-part">
                   {/* You can use category-specific icons here */}
                   <i className={`icon ${category.cat_icon}`}></i>

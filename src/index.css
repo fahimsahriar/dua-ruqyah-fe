@@ -326,6 +326,11 @@
     margin-left: 10px; /* Example margin between icons */
     /* Add styles for each icon */
   }
+  /* Add this to your CSS file */
+.custom-div.selected {
+  border: 2px solid green;
+}
+
   
   
 
